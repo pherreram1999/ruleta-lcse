@@ -70,7 +70,24 @@ int main() {
         cout << "La lista con los nuevos nodos esta compuesta por:" << endl;
         mostrarPremios(header);
     }
-
     cout << "La lista tiene " << cantidad(header) << " elementos en la lista" << endl;
+
+    cout << "-----------------" << endl;
+    cout << "busqueda del premio" << endl;
+    cout << "¿Desea editar un premio" << endl;
+    cout << "1.- si 2.- no" << endl;
+    cout << "res: "; cin >> res;
+    if(res == 1){
+        cout << "ID del premio a buscar " << endl;
+        cout << "ID: "; cin >> id;
+        cout << "---- buscando regalo -----" << endl;
+        Nodo * premioBuscado = buscarPremio(header,id);
+        if(premioBuscado != NULL){
+
+        } else {
+            cout << "Premio con ID " << id << " no econtrado" << endl;
+        }
+    }
+
     return 0;
 }

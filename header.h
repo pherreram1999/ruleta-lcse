@@ -27,3 +27,7 @@ void mostrarPremios(Nodo *);
 int cantidad(Nodo *);
 
 int hacerTurno();
+
+Nodo * buscarPremio(Nodo*,int);
+
+void imprimirPremio(Nodo *);

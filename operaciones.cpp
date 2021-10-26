@@ -50,6 +50,13 @@ bool insertarPremio(Nodo ** header,Nodo * nuevoPremio){
     nav->sig = nuevoPremio;
     return true;
 }
+
+void imprimirPremio(Nodo * premio){
+    cout << "\n--- premido con ID " << premio->id << "-----" << endl;
+    cout << "tipo: " << premio->regalo.tipo << endl;
+    cout << "descripcion: " << premio->regalo.descripcion << endl;
+}
+
 /**
  * pinta los elementos de una lista
  * @param nav = el puntero de la lista a recorrer
@@ -61,9 +68,7 @@ void mostrarPremios(Nodo * nav){
     }
     Nodo * aux = nav;
     do {
-        cout << "\n--- premido con ID " << nav->id << "-----" << endl;
-        cout << "tipo: " << nav->regalo.tipo << endl;
-        cout << "descripcion: " << nav->regalo.descripcion << endl;
+        imprimirPremio(nav);
         nav = nav->sig;
     } while(nav != aux);
 }
@@ -98,3 +103,22 @@ int hacerTurno(){
         num = 1;
     return num;
 }
+
+/**
+ * retorna el nodo identificado por un id
+ * @param nav = el puntero de la lista a buscar el nodo
+ * @param id = el indetificador del nodo a buscar
+ * @return
+ */
+Nodo * buscarPremio(Nodo * nav,int id){
+    if(nav == NULL)
+        return NULL;
+    Nodo * aux = nav;
+    do {
+        if(nav->id == id)
+            return nav;
+        nav = nav->sig;
+    } while(nav != aux);
+    return NULL;
+}
+
