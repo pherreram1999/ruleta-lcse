@@ -2,7 +2,7 @@
 
 // initial data
 
-Regalo regalos[2] = {
+Regalo regalos[4] = {
         {
             "automovil",
             "Dogde Dart 1980"
@@ -10,6 +10,14 @@ Regalo regalos[2] = {
         {
             "consola",
             "PlayStation 5"
+        },
+        {
+                "zapatos",
+                "converse"
+        },
+        {
+                "refresco",
+                "coca"
         }
 };
 
@@ -17,13 +25,15 @@ Regalo regalos[2] = {
 int main() {
     // varaibles globales
     string descripcion,tipo;
-    int id,res;
+    int id,res,turno;
+    bool proseguir = false;
+    // definnes
 
     // inciamos nuestra lista
     Nodo * header = NULL;
 
     // llenamos nuestros dos primeros nodos
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < 4; i++){
         Nodo * nuevoNodo = crearPremio(i+1,regalos[i].tipo,regalos[i].descripcion);
         if(!insertarPremio(&header,nuevoNodo)){
             cout << "no fue posible insertar el nodo con id " << i +1 << endl;
@@ -57,7 +67,7 @@ int main() {
                 cout << "Hubo un problema al crear el nodo" << endl;
             }
         }
-    } while(res == 1);
+    } while(proseguir);
 
     if(cantidad(header) > 2){
         // significa que ha agregado nuevos nodos
@@ -97,9 +107,19 @@ int main() {
 
     // generamos el turno
 
-    int turno = hacerTurno();
-
-    cout << "Tu turno es " << turno;
+    do {
+        cout << "\n-----------------" << endl;
+        cout << "Girando ruleta :D" << endl;
+        turno = hacerTurno();
+        cout << "Tu turno es " << turno;
+        // recorremos la lista
+        Nodo * premioGanador = recorrerPremios(&header,turno);
+        cout << "\n----------------" << endl;
+        cout << "Felicidades tu premio es :O" << endl;
+        imprimirPremio(premioGanador);
+        cout << "¿quieres seguir participando?" << endl;
+        cout << "res: "; cin >> res;
+    } while(res == 1);
 
     return 0;
 }

@@ -123,7 +123,7 @@ Nodo * buscarPremio(Nodo * nav,int id){
 }
 
 /**
- *
+ * editar los valores de un nodo dado
  * @param nodoPremio
  * @param tipo
  * @param descripcion
@@ -135,4 +135,22 @@ void editarPremdio(Nodo * nodoPremio,string tipo, string descripcion){
     }
     nodoPremio->regalo.tipo = tipo;
     nodoPremio->regalo.descripcion = descripcion;
+}
+
+/**
+ *
+ * @param header
+ * @param noRecorridos
+ * @return
+ */
+Nodo * recorrerPremios(Nodo ** header, int noRecorridos){
+    Nodo * ultimoNodo = NULL;
+    Nodo * nav = *header;
+    for(int i = 0; i < noRecorridos; i++){
+        nav = nav->sig;
+    }
+    // reasignar la cabecera
+    *header = nav;
+    // retornamos en el nodo en el que nos quedamos
+    return nav;
 }

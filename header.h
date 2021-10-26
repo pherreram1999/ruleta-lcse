@@ -33,3 +33,5 @@ Nodo * buscarPremio(Nodo*,int);
 void imprimirPremio(Nodo *);
 
 void editarPremdio(Nodo *,string, string);
+
+Nodo * recorrerPremios(Nodo **,int);
