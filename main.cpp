@@ -30,11 +30,6 @@ int main() {
         }
     }
 
-    Nodo * car = header->sig;
-
-    cout << "car id " << car->id << endl;
-    cout << "second car id " << car->sig->id << endl;
-
     cout << "Bienvenido a la ruleta" << endl;
     cout << "----------------------" << endl;
     cout << "los premios cargados son: " << endl;
@@ -78,16 +73,33 @@ int main() {
     cout << "1.- si 2.- no" << endl;
     cout << "res: "; cin >> res;
     if(res == 1){
-        cout << "ID del premio a buscar " << endl;
+        cout << "ID del premio a editar " << endl;
         cout << "ID: "; cin >> id;
         cout << "---- buscando regalo -----" << endl;
         Nodo * premioBuscado = buscarPremio(header,id);
         if(premioBuscado != NULL){
-
+            cout << "Nodo encotrado :D\n" << endl;
+            imprimirPremio(premioBuscado);
+            string tipoTmp, descripcionTmp;
+            cout << "\n---- editando el nodo con id " << premioBuscado->id << "----" << endl;
+            cout << "Favor de proporcionar el tipo" << endl;
+            cout << "tipo: "; cin >> tipoTmp;
+            cout << "Favor de proporcionar la descripcion" << endl;
+            cout << "descripcion: "; cin >> descripcionTmp;
+            editarPremdio(premioBuscado,tipoTmp,descripcionTmp);
+            cout << "---- premio editado ----" << endl;
+            cout << "--- mostrando de nuevo los premios" << endl;
+            mostrarPremios(header);
         } else {
             cout << "Premio con ID " << id << " no econtrado" << endl;
         }
     }
+
+    // generamos el turno
+
+    int turno = hacerTurno();
+
+    cout << "Tu turno es " << turno;
 
     return 0;
 }

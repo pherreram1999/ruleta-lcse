@@ -31,3 +31,5 @@ int hacerTurno();
 Nodo * buscarPremio(Nodo*,int);
 
 void imprimirPremio(Nodo *);
+
+void editarPremdio(Nodo *,string, string);

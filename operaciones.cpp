@@ -122,3 +122,17 @@ Nodo * buscarPremio(Nodo * nav,int id){
     return NULL;
 }
 
+/**
+ *
+ * @param nodoPremio
+ * @param tipo
+ * @param descripcion
+ */
+void editarPremdio(Nodo * nodoPremio,string tipo, string descripcion){
+    if(nodoPremio == NULL){
+        cout << "nodo de premio no valido" << endl;
+        return;
+    }
+    nodoPremio->regalo.tipo = tipo;
+    nodoPremio->regalo.descripcion = descripcion;
+}
